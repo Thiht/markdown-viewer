@@ -1,0 +1,4 @@
+content   markdownviewer          chrome/content/
+skin      markdownviewer  mdskin  chrome/skin/
+resource  mdskin                  chrome/skin/
+overlay   chrome://browser/content/browser.xul  chrome://markdownviewer/content/overlay.xul
