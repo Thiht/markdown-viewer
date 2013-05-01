@@ -15,7 +15,7 @@ if (typeof markdownviewer === 'undefined') {
 
 		onPageLoad: function(aEvent) {
 			var document = aEvent.originalTarget,
-			    regexpMdFile = /\.m(arkdown|kdn?|do?(wn)?)$/i;
+			    regexpMdFile = /\.m(arkdown|kdn?|d(o?wn)?)$/i;
 
 			if (regexpMdFile.test(document.location)) {
 				marked.setOptions({
@@ -30,7 +30,7 @@ if (typeof markdownviewer === 'undefined') {
 				                    '    <title>Markdown Viewer</title>' +
 				                    '    <link rel="stylesheet" type="text/css" href="resource://mdskin/bootstrapLite.css">' +
 				                    '</head>' +
-				                    '<body class="container">' +
+				                    '<body>' +
 				                        marked(content.textContent) +
 				                    '</body>';
 			}
