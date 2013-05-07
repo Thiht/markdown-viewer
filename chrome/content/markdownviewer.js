@@ -17,7 +17,7 @@ if (typeof markdownviewer === 'undefined') {
 			var document = aEvent.originalTarget,
 			    regexpMdFile = /\.m(arkdown|kdn?|do?(wn)?)$/i;
 
-			if ((document.location.protocol != 'view-source:') && regexpMdFile.test(document.location)) {
+			if (document.location.protocol != 'view-source:' && regexpMdFile.test(document.location)) {
 				marked.setOptions({
 					gfm: true,
 					pedantic: false,
