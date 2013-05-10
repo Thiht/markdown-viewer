@@ -5,7 +5,6 @@
 */
 
 body {
-	background-color: #fff;
 	color: #333;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 14px;
@@ -18,7 +17,6 @@ body {
 h1, h2, h3, h4, h5, h6 {
 	color: inherit;
 	font-family: inherit;
-	font-weight: 700;
 	line-height: 1;
 	margin: 10px 0;
 	text-rendering: optimizelegibility;
@@ -60,14 +58,6 @@ p {
 	margin: 0 0 10px;
 }
 
-strong {
-	font-weight: 700;
-}
-
-em {
-	font-style: italic;
-}
-
 a {
 	color: #08c;
 	text-decoration: none;
@@ -79,7 +69,7 @@ a:hover {
 }
 
 blockquote {
-	border-left: 5px solid #ddd;
+	border-left: 5px solid #ccc;
 	margin: 0 0 20px;
 	padding: 0 0 0 15px;
 }
@@ -95,21 +85,8 @@ blockquote:before, blockquote:after {
 	content: "";
 }
 
-cite {
-	font-style: normal;
-}
-
 li {
 	line-height: 20px;
-}
-
-ul, ol {
-	margin: 0 0 10px 25px;
-	padding: 0;
-}
-
-ul ul, ul ol, ol ol, ol ul {
-	margin-bottom: 0;
 }
 
 code, pre {
@@ -158,4 +135,39 @@ hr {
 abbr[title] {
 	border-bottom: 1px dotted #999;
 	cursor: help;
+}
+
+table {
+	max-width: 100%;
+	background-color: transparent;
+	border-collapse: collapse;
+	border-spacing: 0;
+	width: 100%;
+	margin-bottom: 20px;
+}
+
+table th,
+table td {
+	padding: 8px;
+	line-height: 20px;
+	text-align: left;
+	vertical-align: top;
+	border-top: 1px solid #ddd;
+}
+
+table thead th {
+	vertical-align: bottom;
+}
+
+table thead:first-child tr:first-child th,
+table thead:first-child tr:first-child td {
+	border-top: 0;
+}
+
+table tbody + tbody {
+  border-top: 2px solid #ddd;
+}
+
+table table {
+	background-color: #fff;
 }

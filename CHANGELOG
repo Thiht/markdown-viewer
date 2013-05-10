@@ -1,3 +1,9 @@
+2013-05-10 Thibaut Rousseau
+
+	* Simplification of the CSS file
+
+	* Support of the tables (gfm syntax)
+
 2013-05-07 Thibaut Rousseau
 
     * Update of marked.js
