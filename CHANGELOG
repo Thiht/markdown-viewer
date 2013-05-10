@@ -4,6 +4,12 @@
 
     * Minor modifications to bootstrapLite.css
 
+2013-04-27 wonder365
+
+    * Update marked.js to 2013-03-30, lots of bugfix, and add table support. Thanks to [chjj](https://github.com/chjj/marked)
+
+    * Add syntax highlighting for code element. Thanks to [isagalaev](https://github.com/isagalaev/highlight.js)
+
 2013-04-13 Thibaut Rousseau
 
     * Removed the the redirection from filename.md to filename.md?.mdown since this fix doesn't work, the redirect must be done before the page loads
