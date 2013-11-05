@@ -1,3 +1,9 @@
+2013-11-06 Thibaut Rousseau
+
+	* The title of the tab is now set to the first line of the document (SEE https://github.com/Thiht/markdown-viewer/issues/5)
+
+	* The document is now parsed even if the URL ends with an anchor (SEE https://github.com/Thiht/markdown-viewer/issues/4)
+
 2013-05-10 Thibaut Rousseau
 
 	* Simplification of the CSS file
