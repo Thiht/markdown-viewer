@@ -16,9 +16,9 @@ if (typeof markdownviewer === 'undefined') {
 
 		onPageLoad: function(aEvent) {
 			var document = aEvent.originalTarget,
-			    regexpMdFile = /\.m(arkdown|kdn?|d(o?wn)?)$/i;
+			    regexpMdFile = /\.m(arkdown|kdn?|d(o?wn)?)(#.*)?$/i;
 
-			if (regexpMdFile.test(document.location)) {
+			if (regexpMdFile.test(document.location.href)) {
 				marked.setOptions({
 					gfm: true,
 					pedantic: false,
