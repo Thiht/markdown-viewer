@@ -4,6 +4,7 @@ window.addEventListener('load', function load(event) {
 }, false);
 
 if (typeof markdownviewer === 'undefined') {
+
 	var markdownviewer = {
 
 		init: function() {
@@ -28,7 +29,7 @@ if (typeof markdownviewer === 'undefined') {
 				var content = document.firstChild;
 				content.innerHTML = '<!DOCTYPE html>' +
 				                    '<head>' +
-				                    '    <title>Markdown Viewer</title>' +
+				                    '    <title></title>' +
 				                    '    <link rel="stylesheet" type="text/css" href="resource://mdskin/bootstrapLite.css">' +
 				                    '    <link rel="stylesheet" type="text/css" href="resource://mdskin/default.min.css">' +
 				                    '</head>' +
@@ -36,10 +37,12 @@ if (typeof markdownviewer === 'undefined') {
 				                        marked(content.textContent) +
 				                    '</body>';
 
-				var loadjsfile=function(doc, jsfile){
-					var script = doc.createElement("script");
+				document.title = document.body.firstChild.textContent.substr(0, 50).replace('<', '&lt;').replace('>', '&gt;') + " - Markdown Viewer";
+
+				var loadjsfile = function(doc, jsfile){
+					var script  = doc.createElement("script");
 					script.type = "text/javascript";
-					script.src = "resource://mdskin/"+jsfile;
+					script.src  = "resource://mdskin/" + jsfile;
 					var head = doc.getElementsByTagName("head")[0] || doc.documentElement;
 					head.insertBefore(script, head.firstChild);
 				};
