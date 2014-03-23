@@ -1,4 +1,10 @@
-content   markdownviewer          chrome/content/
-skin      markdownviewer  mdskin  chrome/skin/
-resource  mdskin                  chrome/skin/
-overlay   chrome://browser/content/browser.xul  chrome://markdownviewer/content/overlay.xul
+content markdown-viewer chrome/content/
+skin markdown-viewer mdvskin chrome/skin/
+resource mdvskin chrome/skin/
+overlay chrome://browser/content/browser.xul chrome://markdown-viewer/content/overlay.xul
+
+component {2027cd20-b21a-11e3-a5e2-0800200c9a66} components/x-markdown-to-html-stream.js
+contract @mozilla.org/streamconv;1?from=text/x-markdown&to=*/* {2027cd20-b21a-11e3-a5e2-0800200c9a66}
+
+component {ee55ae20-b205-11e3-a5e2-0800200c9a66} components/x-genesis-rom-to-html-stream.js
+contract @mozilla.org/streamconv;1?from=application/x-genesis-rom&to=*/* {ee55ae20-b205-11e3-a5e2-0800200c9a66}
