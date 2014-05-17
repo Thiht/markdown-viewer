@@ -26,6 +26,7 @@ if (!MarkdownViewer) {
 				                    '<head>' +
 				                    '    <title></title>' +
 				                    '    <meta charset="utf-8" />' +
+				                    '    <link type="image/png" rel="icon" href="resource://mdvskin/icon32.png">' +
 				                    '    <link rel="stylesheet" type="text/css" href="resource://mdvskin/markdown-viewer.css" />' +
 				                    '</head>' +
 				                    '<body class="container">' +
