@@ -1,1 +1,37 @@
 *.xpi
+
+# https://github.com/github/gitignore/blob/master/Global/Linux.gitignore
+*~
+.directory
+
+# https://github.com/github/gitignore/blob/master/Global/Windows.gitignore
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msm
+*.msp
+
+# https://github.com/github/gitignore/blob/master/Global/OSX.gitignore
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Spotlight-V100
+.Trashes
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# https://github.com/github/gitignore/blob/master/Global/SublimeText.gitignore
+*.sublime-workspace
+*.sublime-project
+sftp-config.json
+
+# https://github.com/github/gitignore/blob/master/Global/NotepadPP.gitignore
+*.bak
