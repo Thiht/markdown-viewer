@@ -1,4 +1,4 @@
-# Markdown Viewer README
+# Markdown Viewer
 
 A Markdown Viewer add-on for Firefox.
 
