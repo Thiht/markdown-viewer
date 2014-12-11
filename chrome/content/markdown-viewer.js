@@ -46,6 +46,17 @@ function parseHTML(doc, html, allowStyle, baseURI, isXML) {
 
 
 
+function BrowserSetForcedCharacterSet(aCharset) {
+    var wnd = (gContextMenu ? document.commandDispatcher.focusedWindow : window);
+    if ((window == wnd) || (wnd == null)) wnd = window.content;
+    const Ci = Components.interfaces;
+    var webNav = wnd.QueryInterface(Ci.nsIInterfaceRequestor).getInterface(Ci.nsIWebNavigation);
+    var docShell = webNav.QueryInterface(Ci.nsIDocShell);
+    docShell.QueryInterface(Ci.nsIDocCharset).charset = aCharset;
+    webNav.reload(nsIWebNavigation.LOAD_FLAGS_CHARSET_CHANGE);
+}
+
+
 if (!MarkdownViewer) {
 
 	var MarkdownViewer = {
@@ -63,6 +74,11 @@ if (!MarkdownViewer) {
 			if (document.location.protocol !== "view-source:"
 				&& markdownFileExtension.test(document.location.href)) {
 
+                if (document.characterSet !== 'UTF-8') {
+                    BrowserSetForcedCharacterSet('utf-8');
+                    return;
+                }
+                
 				var textContent = document.documentElement.textContent,
 				    fragment = parseHTML(document, '<div class="container">'+marked(textContent)+'</div>', false, makeURI(document.location.href));
 
