@@ -72,7 +72,8 @@ if (!MarkdownViewer) {
 			var markdownFileExtension = /\.m(arkdown|kdn?|d(o?wn)?)(#.*)?(.*)$/i;
 
 			if (document.location.protocol !== "view-source:"
-				&& markdownFileExtension.test(document.location.href)) {
+				&& markdownFileExtension.test(document.location.href)
+				&& document.contentType !== "text/html") {
 
                 if (document.characterSet !== 'UTF-8') {
                     BrowserSetForcedCharacterSet('utf-8');
