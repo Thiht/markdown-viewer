@@ -41,7 +41,7 @@ if (!MarkdownViewer.StreamConverter) {
 			this.data    = "";
 			this.uri     = aRequest.QueryInterface (Components.interfaces.nsIChannel).URI.spec;
 		    this.channel = aRequest;
-		    this.channel.contentType = "text/html";
+		    this.channel.contentType = "text/plain";
 		    this.listener.onStartRequest (this.channel, aContext);
 		},
 
