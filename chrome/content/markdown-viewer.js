@@ -27,7 +27,7 @@ function makeURI(aURL, aOriginCharset, aBaseURI) {
  *   XML fragments.
  * @param {boolean} isXML If true, parse the fragment as XML.
  */
-function parseHTML(doc, html, allowStyle, baseURI, isXML) {;
+function parseHTML(doc, html, allowStyle, baseURI, isXML) {
 	const PARSER_UTILS = "@mozilla.org/parserutils;1";
 
 	// User the newer nsIParserUtils on versions that support it.
