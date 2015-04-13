@@ -872,7 +872,7 @@ Renderer.prototype.link = function(href, title, text) {
       return '';
     }
   }
-  var out = '<a href="' + href + '" data-original-href="' +href+ '"';
+  var out = '<a href="' + href + '"';
   if (title) {
     out += ' title="' + title + '"';
   }
