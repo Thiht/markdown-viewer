@@ -27,7 +27,7 @@ function makeURI(aURL, aOriginCharset, aBaseURI) {
  *   XML fragments.
  * @param {boolean} isXML If true, parse the fragment as XML.
  */
-function parseHTML(doc, html, allowStyle, baseURI, isXML) {
+function parseHTML(doc, html, allowStyle, baseURI, isXML) {;
 	const PARSER_UTILS = "@mozilla.org/parserutils;1";
 
 	// User the newer nsIParserUtils on versions that support it.
@@ -70,7 +70,6 @@ if (!MarkdownViewer) {
 		onPageLoad: function(aEvent) {
 			var document = aEvent.originalTarget;
 			var markdownFileExtension = /\.m(arkdown|kdn?|d(o?wn)?)(#.*)?(.*)$/i;
-
 			if (document.location.protocol !== "view-source:"
 				&& markdownFileExtension.test(document.location.href)
 				&& document.contentType !== "text/html") {
@@ -99,8 +98,27 @@ if (!MarkdownViewer) {
 				meta.name = 'viewport';
 				meta.content = 'width=device-width, initial-scale=1';
 				document.head.appendChild(meta);
-
 				document.body.appendChild(fragment);
+                
+                var links= document.getElementsByTagName('a');
+                var linkInTheSameFolder= /^[^/\\]+$/;
+                var linkWithNoExtension= /^[^/\\.]+$/;
+                for( var i=0; i<links.length; i++ ) {
+                    var link= links[i];
+                    if( !link.getAttribute('href') ) {
+                        var originalHref= link.getAttribute('data-original-href');
+                        
+                        // Sanitize: Only allow links in the same folder.
+                        if( linkInTheSameFolder.test(originalHref) ) {
+                            
+                            // Handling links with no extension, as used on Github pages, which have files named PageName instead of PageName.md
+                            if( linkWithNoExtension.test(originalHref) ) {
+                                originalHref+= '.md';
+                            }
+                            link.setAttribute( 'href', originalHref );
+                        }
+                    }
+                }
 			}
 		}
 	};
