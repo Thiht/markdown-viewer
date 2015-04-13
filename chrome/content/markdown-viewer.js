@@ -101,21 +101,37 @@ if (!MarkdownViewer) {
 				document.body.appendChild(fragment);
                 
                 var links= document.getElementsByTagName('a');
-                var linkInTheSameFolder= /^[^/\\]+$/;
-                var linkWithNoExtension= /^[^/\\.]+$/;
+                // Files in the same folder: "fileNameRegardlessOfExtension", "./fileNameRegardlessOfExtension", "." or "./". Allow any #hash-part, too. Also, allow for relative (#hash-part-only) URLs within the same document.
+                var linkInTheSameFolderWithHash= /^(\.|(\.\/)?[^#/\\]*)(#.*)?$/;
+                
+                // Like linkInTheSameFolderWithHash, but without extension and exluding any #hash-part.
+                var linkWithNoExtension= /^(\.|(\.\/)?[^#/\\.]*)$/;
+                
                 for( var i=0; i<links.length; i++ ) {
                     var link= links[i];
                     if( !link.getAttribute('href') ) {
                         var originalHref= link.getAttribute('data-original-href');
                         
-                        // Sanitize: Only allow links in the same folder.
-                        if( linkInTheSameFolder.test(originalHref) ) {
-                            
-                            // Handling links with no extension, as used on Github pages, which have files named PageName instead of PageName.md
-                            if( linkWithNoExtension.test(originalHref) ) {
-                                originalHref+= '.md';
+                        // linkInTheSameFolderWithHash also matches an empty string, so check that URL is non-empty
+                        if( originalHref!=='' ) {
+                            // Sanitize: Only allow links in the same folder.
+                            var match= linkInTheSameFolderWithHash.exec(originalHref);
+                            if( match ) {
+
+                                var url= match[1];
+                                // Handling links with no extension, as used on Github pages: replacing PageName with PageName.md. Also, replacing ./ with ./index.md.
+                                // If url is empty, then it's a #hash-part-only relative link.
+                                if( url!=='' && linkWithNoExtension.test(url) ) {
+                                    if( url==="." || url==='./' ) {
+                                        url= 'index';
+                                    }
+                                    url+= '.md';
+                                }
+                                if( match[3] ) {
+                                    url+= match[3];
+                                }
+                                link.setAttribute( 'href', url );
                             }
-                            link.setAttribute( 'href', originalHref );
                         }
                     }
                 }
