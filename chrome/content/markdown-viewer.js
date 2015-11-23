@@ -75,7 +75,7 @@ if (!MarkdownViewer) {
 				markdownFileExtension.test(document.location.href) &&
 				document.contentType !== "text/html") {
 
-                if (document.characterSet !== 'UTF-8') {
+                if (document.characterSet.toLowerCase() !== 'utf-8') {
                     BrowserSetForcedCharacterSet('utf-8');
                     return;
                 }
