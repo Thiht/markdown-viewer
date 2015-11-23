@@ -3,14 +3,12 @@ window.addEventListener('load', function load(event) {
 	MarkdownViewer.init();
 }, false);
 
-
 // https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XPCOM/Reference/Interface/nsIURI
 function makeURI(aURL, aOriginCharset, aBaseURI) {
 	var ioService = Components.classes["@mozilla.org/network/io-service;1"]
 	                .getService(Components.interfaces.nsIIOService);
 	return ioService.newURI(aURL, aOriginCharset, aBaseURI);
 }
-
 
 /**
  * Safely parse an HTML fragment, removing any executable
@@ -44,8 +42,6 @@ function parseHTML(doc, html, allowStyle, baseURI, isXML) {
 	                 .parseFragment(html, !!isXML, baseURI, doc.documentElement);
 }
 
-
-
 function BrowserSetForcedCharacterSet(aCharset) {
     var wnd = (gContextMenu ? document.commandDispatcher.focusedWindow : window);
     if ((window === wnd) || (wnd === null)) wnd = window.content;
@@ -56,51 +52,90 @@ function BrowserSetForcedCharacterSet(aCharset) {
     webNav.reload(nsIWebNavigation.LOAD_FLAGS_CHARSET_CHANGE);
 }
 
-
 if (!MarkdownViewer) {
 
 	var MarkdownViewer = {
 
 		init: function() {
-			var appcontent = document.getElementById('appcontent');
+			const appcontent = document.getElementById('appcontent');
 			if (appcontent)
 				appcontent.addEventListener('DOMContentLoaded', this.onPageLoad, true);
 		},
 
 		onPageLoad: function(aEvent) {
-			var document = aEvent.originalTarget;
-			var markdownFileExtension = /\.m(arkdown|kdn?|d(o?wn)?)(#.*)?(.*)$/i;
+			const document = aEvent.originalTarget;
+			const markdownFileExtension = /\.m(arkdown|kdn?|d(o?wn)?)(#.*)?(.*)$/i;
 
 			if (document.location.protocol !== "view-source:" &&
 				markdownFileExtension.test(document.location.href) &&
 				document.contentType !== "text/html") {
 
+				// Change the charset
                 if (document.characterSet.toLowerCase() !== 'utf-8') {
                     BrowserSetForcedCharacterSet('utf-8');
                     return;
                 }
-                
-				var textContent = document.documentElement.textContent,
-				    fragment = parseHTML(document, '<div class="container">'+marked(textContent)+'</div>', false, makeURI(document.location.href));
 
+                // Parse the content Markdown => HTML
+                var md = markdownit({
+                	html: true,
+                	linkify: true,
+                	// Shameless copypasta https://github.com/markdown-it/markdown-it#syntax-highlighting
+					highlight: function (str, lang) {
+						if (lang && hljs.getLanguage(lang)) {
+							try {
+								return hljs.highlight(lang, str).value;
+							} catch (__) {}
+						}
+
+						try {
+							return hljs.highlightAuto(str).value;
+						} catch (__) {}
+
+						return ''; // use external default escaping
+					}
+				});
+
+				var textContent = document.documentElement.textContent,
+				    fragment = parseHTML(document, '<div class="container">' + md.render(textContent) + '</div>', false, makeURI(document.location.href));
+
+				// Empty the body
 				while (document.body.firstChild) {
 					document.body.removeChild(document.body.firstChild);
 				}
 
-				document.title = textContent.substr(0, 50).replace('<', '&lt;').replace('>', '&gt;');
+				// Give the page some styles
+				const mdvStyle = document.createElement('link');
+				mdvStyle.rel = 'stylesheet';
+				mdvStyle.type = 'text/css';
+				mdvStyle.href = 'resource://mdvskin/markdown-viewer.css';
+				document.head.appendChild(mdvStyle);
 
-				var link = document.createElement('link');
-				link.rel = 'stylesheet';
-				link.type = 'text/css';
-				link.href = 'resource://mdvskin/markdown-viewer.css';
-				document.head.appendChild(link);
+				const hljsStyle = document.createElement('link');
+				hljsStyle.rel = 'stylesheet';
+				hljsStyle.type = 'text/css';
+				hljsStyle.href = 'resource://mdvskin/default.css';
+				document.head.appendChild(hljsStyle);
 
+				// Adding this is considered a good practice for mobiles
 				var meta = document.createElement('meta');
 				meta.name = 'viewport';
 				meta.content = 'width=device-width, initial-scale=1';
 				document.head.appendChild(meta);
 
+				// Add the content
 				document.body.appendChild(fragment);
+
+				// Generate a title
+				var title = document.body.querySelector('h1'); // first h1
+				if (title) {
+					title = title.textContent;
+				}
+				else {
+					title = document.body.textContent.trim().split("\n")[0]; // first line
+				}
+				title = title.trim().substr(0, 50).replace('<', '&lt;').replace('>', '&gt;');
+				document.title = title;
 			}
 		}
 	};
