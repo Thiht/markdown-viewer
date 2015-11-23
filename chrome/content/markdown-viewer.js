@@ -6,7 +6,7 @@ window.addEventListener('load', function load(event) {
 // https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XPCOM/Reference/Interface/nsIURI
 function makeURI(aURL, aOriginCharset, aBaseURI) {
 	var ioService = Components.classes["@mozilla.org/network/io-service;1"]
-	                .getService(Components.interfaces.nsIIOService);
+					.getService(Components.interfaces.nsIIOService);
 	return ioService.newURI(aURL, aOriginCharset, aBaseURI);
 }
 
@@ -31,25 +31,25 @@ function parseHTML(doc, html, allowStyle, baseURI, isXML) {
 	// User the newer nsIParserUtils on versions that support it.
 	if (PARSER_UTILS in Components.classes) {
 		let parser = Components.classes[PARSER_UTILS]
-		                       .getService(Ci.nsIParserUtils);
+							   .getService(Ci.nsIParserUtils);
 		if ("parseFragment" in parser)
 			return parser.parseFragment(html, allowStyle ? parser.SanitizerAllowStyle : 0,
-			                            !!isXML, baseURI, doc.documentElement);
+										!!isXML, baseURI, doc.documentElement);
 	}
 
 	return Components.classes["@mozilla.org/feed-unescapehtml;1"]
-	                 .getService(Components.interfaces.nsIScriptableUnescapeHTML)
-	                 .parseFragment(html, !!isXML, baseURI, doc.documentElement);
+					 .getService(Components.interfaces.nsIScriptableUnescapeHTML)
+					 .parseFragment(html, !!isXML, baseURI, doc.documentElement);
 }
 
 function BrowserSetForcedCharacterSet(aCharset) {
-    var wnd = (gContextMenu ? document.commandDispatcher.focusedWindow : window);
-    if ((window === wnd) || (wnd === null)) wnd = window.content;
-    const Ci = Components.interfaces;
-    var webNav = wnd.QueryInterface(Ci.nsIInterfaceRequestor).getInterface(Ci.nsIWebNavigation);
-    var docShell = webNav.QueryInterface(Ci.nsIDocShell);
-    docShell.QueryInterface(Ci.nsIDocCharset).charset = aCharset;
-    webNav.reload(nsIWebNavigation.LOAD_FLAGS_CHARSET_CHANGE);
+	var wnd = (gContextMenu ? document.commandDispatcher.focusedWindow : window);
+	if ((window === wnd) || (wnd === null)) wnd = window.content;
+	const Ci = Components.interfaces;
+	var webNav = wnd.QueryInterface(Ci.nsIInterfaceRequestor).getInterface(Ci.nsIWebNavigation);
+	var docShell = webNav.QueryInterface(Ci.nsIDocShell);
+	docShell.QueryInterface(Ci.nsIDocCharset).charset = aCharset;
+	webNav.reload(nsIWebNavigation.LOAD_FLAGS_CHARSET_CHANGE);
 }
 
 if (!MarkdownViewer) {
@@ -71,16 +71,15 @@ if (!MarkdownViewer) {
 				document.contentType !== "text/html") {
 
 				// Change the charset
-                if (document.characterSet.toLowerCase() !== 'utf-8') {
-                    BrowserSetForcedCharacterSet('utf-8');
-                    return;
-                }
+				if (document.characterSet.toLowerCase() !== 'utf-8') {
+					BrowserSetForcedCharacterSet('utf-8');
+				}
 
-                // Parse the content Markdown => HTML
-                var md = markdownit({
-                	html: true,
-                	linkify: true,
-                	// Shameless copypasta https://github.com/markdown-it/markdown-it#syntax-highlighting
+				// Parse the content Markdown => HTML
+				var md = markdownit({
+					html: true,
+					linkify: true,
+					// Shameless copypasta https://github.com/markdown-it/markdown-it#syntax-highlighting
 					highlight: function (str, lang) {
 						if (lang && hljs.getLanguage(lang)) {
 							try {
@@ -97,7 +96,7 @@ if (!MarkdownViewer) {
 				});
 
 				var textContent = document.documentElement.textContent,
-				    fragment = parseHTML(document, '<div class="container">' + md.render(textContent) + '</div>', false, makeURI(document.location.href));
+					fragment = parseHTML(document, '<div class="container">' + md.render(textContent) + '</div>', false, makeURI(document.location.href));
 
 				// Empty the body
 				while (document.body.firstChild) {
@@ -118,10 +117,10 @@ if (!MarkdownViewer) {
 				document.head.appendChild(hljsStyle);
 
 				// Adding this is considered a good practice for mobiles
-				var meta = document.createElement('meta');
-				meta.name = 'viewport';
-				meta.content = 'width=device-width, initial-scale=1';
-				document.head.appendChild(meta);
+				const viewport = document.createElement('meta');
+				viewport.name = 'viewport';
+				viewport.content = 'width=device-width, initial-scale=1';
+				document.head.appendChild(viewport);
 
 				// Add the content
 				document.body.appendChild(fragment);
