@@ -48,7 +48,7 @@ function parseHTML(doc, html, allowStyle, baseURI, isXML) {
 
 function BrowserSetForcedCharacterSet(aCharset) {
     var wnd = (gContextMenu ? document.commandDispatcher.focusedWindow : window);
-    if ((window == wnd) || (wnd == null)) wnd = window.content;
+    if ((window === wnd) || (wnd === null)) wnd = window.content;
     const Ci = Components.interfaces;
     var webNav = wnd.QueryInterface(Ci.nsIInterfaceRequestor).getInterface(Ci.nsIWebNavigation);
     var docShell = webNav.QueryInterface(Ci.nsIDocShell);
@@ -71,9 +71,9 @@ if (!MarkdownViewer) {
 			var document = aEvent.originalTarget;
 			var markdownFileExtension = /\.m(arkdown|kdn?|d(o?wn)?)(#.*)?(.*)$/i;
 
-			if (document.location.protocol !== "view-source:"
-				&& markdownFileExtension.test(document.location.href)
-				&& document.contentType !== "text/html") {
+			if (document.location.protocol !== "view-source:" &&
+				markdownFileExtension.test(document.location.href) &&
+				document.contentType !== "text/html") {
 
                 if (document.characterSet !== 'UTF-8') {
                     BrowserSetForcedCharacterSet('utf-8');

@@ -1,6 +1,7 @@
 /*
-	* Linux associates the *.md file to the text/x-markdown mime type by default
-	* We have to modify the stream to text/html
+	* Linux associates the *.md file to the text/markdown mime type by default
+    * See /usr/share/mime/ for more info
+	* We have to modify the stream to text/plain
 */
 if (!MarkdownViewer)
 	var MarkdownViewer = {};
@@ -11,9 +12,9 @@ if (!MarkdownViewer.StreamConverter) {
 	MarkdownViewer.StreamConverter = function() {};
 
 	MarkdownViewer.StreamConverter.prototype = {
-		classDescription: "Markdown to HTML stream converter",
+		classDescription: "text/markdown to text/plain stream converter",
 		classID: Components.ID("{2027cd20-b21a-11e3-a5e2-0800200c9a66}"),
-		contractID: "@mozilla.org/streamconv;1?from=text/x-markdown&to=*/*",
+		contractID: "@mozilla.org/streamconv;1?from=text/markdown&to=*/*",
 
 		_xpcom_factory: {
 			createInstance: function(outer, iid) {
