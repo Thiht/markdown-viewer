@@ -8,3 +8,7 @@ The add-on is downloadable on [addons.mozilla.org](https://addons.mozilla.org/fr
 ## Build
 * Download the current version
 * Build the .xpi with `build.bat` if you're using Windows (7-zip required in the path) or with `build.sh` if you're using Linux
+
+## Install
+* Open the .xpi with Firefox
+* If Firefox prevents the install because the add-on is unsigned, go to `about:config` and change the key `xpinstall.signatures.required` from `true` to `false`.
