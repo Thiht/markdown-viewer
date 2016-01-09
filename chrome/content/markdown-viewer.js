@@ -64,7 +64,7 @@ if (!MarkdownViewer) {
 
 		onPageLoad: function(aEvent) {
 			const document = aEvent.originalTarget;
-			const markdownFileExtension = /\.m(arkdown|kdn?|d(o?wn)?)(#.*)?(.*)$/i;
+			const markdownFileExtension = /\.m(arkdown|kdn?|d(o?wn)?)(\?.*)?(#.*)?$/i;
 
 			if (document.location.protocol !== "view-source:" &&
 				markdownFileExtension.test(document.location.href) &&
