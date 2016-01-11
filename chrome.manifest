@@ -6,3 +6,6 @@ overlay chrome://browser/content/browser.xul chrome://markdown-viewer/content/ov
 component {2027cd20-b21a-11e3-a5e2-0800200c9a66} components/markdown-to-plain-stream.js
 contract @mozilla.org/streamconv;1?from=text/markdown&to=*/* {2027cd20-b21a-11e3-a5e2-0800200c9a66}
 
+component {2027cd20-b21a-11e3-a5e2-0800200c9a66} components/x-markdown-to-plain-stream.js
+contract @mozilla.org/streamconv;1?from=text/x-markdown&to=*/* {2027cd20-b21a-11e3-a5e2-0800200c9a66}
+
