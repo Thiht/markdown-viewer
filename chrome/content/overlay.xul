@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <overlay xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 	<script type="application/x-javascript" src="chrome://markdown-viewer/content/markdown-it.min.js"></script>
-	<script type="application/x-javascript" src="chrome://markdown-viewer/content/highlight.pack.js"></script>
+	<script type="application/x-javascript" src="chrome://markdown-viewer/content/highlight.pack.min.js"></script>
 	<script type="application/x-javascript" src="chrome://markdown-viewer/content/markdown-viewer.js"></script>
 </overlay>
