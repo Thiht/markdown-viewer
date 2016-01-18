@@ -18,7 +18,7 @@ if (!MarkdownViewer.StreamConverter) {
 
 		_xpcom_factory: {
 			createInstance: function(outer, iid) {
-				if (outer != null)
+				if (outer !== null)
 					throw Components.results.NS_ERROR_NO_AGGREGATION;
 
 				if (iid.equals(Components.interfaces.nsISupports) ||
