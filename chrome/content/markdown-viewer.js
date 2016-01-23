@@ -137,5 +137,8 @@ if (!MarkdownViewer) {
 				document.title = title;
 			}
 		}
+
+		onPageError: function(aEvent) {
+		}
 	};
 }
