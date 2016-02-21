@@ -136,7 +136,7 @@ if (!MarkdownViewer) {
 				title = title.trim().substr(0, 50).replace('<', '&lt;').replace('>', '&gt;');
 				document.title = title;
 			}
-		}
+		},
 
 		onPageError: function(aEvent) {
 		}
