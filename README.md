@@ -1,4 +1,4 @@
-# Markdown Viewer README
+# Markdown Viewer README [![Build Status](https://travis-ci.org/Thiht/markdown-viewer.svg?branch=master)](https://travis-ci.org/Thiht/markdown-viewer)
 A Markdown Viewer add-on for Firefox.
 
 The add-on is downloadable on [addons.mozilla.org](https://addons.mozilla.org/fr/firefox/addon/markdown-viewer/).
