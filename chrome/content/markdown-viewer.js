@@ -116,6 +116,13 @@ if (!MarkdownViewer) {
 				hljsStyle.href = 'resource://mdvskin/default.css';
 				document.head.appendChild(hljsStyle);
 
+				const printStyle = document.createElement('link');
+				printStyle.rel = 'stylesheet';
+				printStyle.setAttribute('media', 'print');
+				printStyle.type = 'text/css';
+				printStyle.href = 'resource://mdvskin/markdown-viewer-print.css';
+				document.head.appendChild(printStyle);
+                
 				// Adding this is considered a good practice for mobiles
 				const viewport = document.createElement('meta');
 				viewport.name = 'viewport';
