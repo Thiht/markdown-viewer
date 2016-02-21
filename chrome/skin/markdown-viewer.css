@@ -1,177 +1,89 @@
-/*
-	* Modified and lightened version of Twitter Bootstrap, by Thiht
-	* Originally licensed under the Apache License v2.0
-	* http://www.apache.org/licenses/LICENSE-2.0
-*/
-
 body {
 	color: #333;
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-	font-size: 14px;
-	line-height: 20px;
-	margin: 0 auto;
-	padding-top: 30px;
-	width: 940px;
+	font-family: 'Segoe UI', 'Lucida Grande', Helvetica, sans-serif;
+	line-height: 1.5;
+	margin: 50px auto;
+	max-width: 800px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: normal;
+	line-height: 1em;
+	margin: 20px 0;
+}
+h1 {
+	font-size: 2.25em;
+}
+h2 {
+	font-size: 1.75em;
+}
+h3 {
+	font-size: 1.5em;
+}
+h4, h5, h6 {
+	font-size: 1.25em;
+}
+
+a {
+	color: #08C;
+	text-decoration: none;
+}
+a:hover, a:focus {
+	text-decoration: underline;
+}
+a:visited {
+	color: #058;
 }
 
 img {
 	max-width: 100%;
 }
 
-h1, h2, h3, h4, h5, h6 {
-	color: inherit;
-	font-family: inherit;
-	line-height: 1;
-	margin: 10px 0;
-	text-rendering: optimizelegibility;
+li + li {
+	margin-top: 3px;
 }
-
-h1, h2, h3 {
-	line-height: 40px;
-}
-
-h4, h5, h6 {
-	line-height: 20px;
-}
-
-h1 {
-	font-size: 36px;
-}
-
-h2 {
-	font-size: 30px;
-}
-
-h3 {
-	font-size: 24px;
-}
-
-h4 {
-	font-size: 18px;
-}
-
-h5 {
-	font-size: 14px;
-}
-
-h6 {
-	font-size: 12px;
-}
-
-p {
-	margin: 0 0 10px;
-}
-
-a {
-	color: #08c;
-	text-decoration: none;
-}
-
-a:hover {
-	color: #005580;
-	text-decoration: underline;
-}
-
-blockquote {
-	border-left: 5px solid #ccc;
-	margin: 0 0 20px;
-	padding: 0 0 0 15px;
-}
-
-blockquote p {
-	font-size: 16px;
-	font-weight: 300;
-	line-height: 25px;
-	margin-bottom: 0;
-}
-
-blockquote:before, blockquote:after {
-	content: "";
-}
-
-li {
-	line-height: 20px;
-}
-
-code, pre {
-	border-radius: 3px;
-	color: #333;
-	font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
-	font-size: 12px;
-	padding: 0 3px 2px;
+dt {
+	font-weight: bold;
 }
 
 code {
-	background-color: #f7f7f9;
-	border: 1px solid #e1e1e8;
-	color: #444;
-	padding: 2px 4px;
+	background: #EEE;
+	font-family: "Consolas", "Lucida Console", monospace;
+	padding: 1px 5px;
 }
-
 pre {
-	background-color: #f5f5f5;
-	border: 1px solid rgba(0,0,0,0.15);
-	border-radius: 4px;
-	display: block;
-	font-size: 13px;
-	line-height: 20px;
-	margin: 0 0 10px;
-	padding: 9.5px;
+	background: #EEE;
+	padding: 5px 10px;
 	white-space: pre-wrap;
-	word-break: break-all;
-	word-wrap: break-word;
 }
-
 pre code {
-	background-color: transparent;
-	border: 0;
-	color: inherit;
 	padding: 0;
 }
 
-hr {
-	border: 0;
-	border-bottom: 1px solid #eee;
-	border-top: 1px solid #ddd;
-	margin: 20px 0;
-}
-
-abbr[title] {
-	border-bottom: 1px dotted #999;
-	cursor: help;
+blockquote {
+	border-left: 5px solid #EEE;
+	margin: 0;
+	padding: 0 10px;
 }
 
 table {
-	max-width: 100%;
-	background-color: transparent;
 	border-collapse: collapse;
-	border-spacing: 0;
 	width: 100%;
-	margin-bottom: 20px;
 }
-
-table th,
-table td {
-	padding: 8px;
-	line-height: 20px;
+table + table {
+	margin-top: 1em;
+}
+thead {
+	background: #EEE;
 	text-align: left;
-	vertical-align: top;
-	border-top: 1px solid #ddd;
+}
+th, td {
+	border: 1px solid #EEE;
+	padding: 5px 10px;
 }
 
-table thead th {
-	vertical-align: bottom;
-}
-
-table thead:first-child tr:first-child th,
-table thead:first-child tr:first-child td {
-	border-top: 0;
-}
-
-table tbody + tbody {
-  border-top: 2px solid #ddd;
-}
-
-table table {
-	background-color: #fff;
+hr {
+	background: #EEE;
+	border: 0;
+	height: 1px;
 }
