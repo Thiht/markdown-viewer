@@ -1,0 +1,16 @@
+{
+	"id": "markdownviewer@thiht",
+	"title": "Markdown Viewer",
+	"name": "markdownviewer",
+	"version": "2.0.0",
+	"description": "A simple Markdown Viewer, for Firefox",
+	"main": "src/index.js",
+	"author": "Thibaut Rousseau",
+	"engines": {
+		"firefox": ">=38.0a1"
+	},
+	"license": "MIT",
+	"keywords": [
+		"markdown"
+	]
+}
