@@ -28,7 +28,7 @@ MarkdownFormatter.prototype.markdownToHTML = function(markdownString) {
 	return `<!DOCTYPE html>
 <html>
 	<head>
-		<title>MDV</title>
+		<title>(untitled document)</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="${this.baseUrl}resources/styles/sss.css">
@@ -37,6 +37,7 @@ MarkdownFormatter.prototype.markdownToHTML = function(markdownString) {
 	</head>
 	<body>
 		${content}
+		<script src="${this.baseUrl}resources/scripts/main.js"></script>
 	</body>
 </html>`;
 };
