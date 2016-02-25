@@ -1,1 +1,13 @@
+# Generated files
 *.xpi
+
+# Sublime Text project files
+*.sublime-project
+*.sublime-workspace
+
+# Vim temporary files
+*~
+
+# Vim swap files
+*.swp
+*.swo
