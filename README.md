@@ -2,7 +2,7 @@
 
 A simple Markdown Viewer, for Firefox.
 
-Most of the basis of the code commes from the project [JSONView](https://github.com/bhollis/jsonview).
+Most of the basis of the code comes from the project [JSONView](https://github.com/bhollis/jsonview).
 
 ## Development
 
