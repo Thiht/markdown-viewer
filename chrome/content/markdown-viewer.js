@@ -3,6 +3,8 @@ window.addEventListener('load', function load(event) {
 	MarkdownViewer.init();
 }, false);
 
+const Ci = Components.interfaces;
+
 // https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XPCOM/Reference/Interface/nsIURI
 function makeURI(aURL, aOriginCharset, aBaseURI) {
 	var ioService = Components.classes["@mozilla.org/network/io-service;1"]
@@ -45,7 +47,6 @@ function parseHTML(doc, html, allowStyle, baseURI, isXML) {
 function BrowserSetForcedCharacterSet(aCharset) {
 	var wnd = (gContextMenu ? document.commandDispatcher.focusedWindow : window);
 	if ((window === wnd) || (wnd === null)) wnd = window.content;
-	const Ci = Components.interfaces;
 	var webNav = wnd.QueryInterface(Ci.nsIInterfaceRequestor).getInterface(Ci.nsIWebNavigation);
 	var docShell = webNav.QueryInterface(Ci.nsIDocShell);
 	docShell.QueryInterface(Ci.nsIDocCharset).charset = aCharset;
