@@ -1,10 +1,11 @@
 /*
 	* Linux associates the *.md file to the text/markdown mime type by default
-    * See /usr/share/mime/ for more info
+	* See /usr/share/mime/ for more info
 	* We have to modify the stream to text/plain
 */
-if (!MarkdownViewer)
+if (!MarkdownViewer) {
 	var MarkdownViewer = {};
+}
 
 if (!MarkdownViewer.StreamConverter) {
 	Components.utils.import("resource://gre/modules/XPCOMUtils.jsm");
@@ -18,8 +19,9 @@ if (!MarkdownViewer.StreamConverter) {
 
 		_xpcom_factory: {
 			createInstance: function(outer, iid) {
-				if (outer !== null)
+				if (outer !== null) {
 					throw Components.results.NS_ERROR_NO_AGGREGATION;
+				}
 
 				if (iid.equals(Components.interfaces.nsISupports) ||
 					iid.equals(Components.interfaces.nsIStreamConverter) ||
@@ -39,8 +41,8 @@ if (!MarkdownViewer.StreamConverter) {
 		),
 
 		onStartRequest: function(aRequest, aContext) {
-			this.data    = "";
-			this.uri     = aRequest.QueryInterface (Components.interfaces.nsIChannel).URI.spec;
+			this.data = "";
+			this.uri = aRequest.QueryInterface (Components.interfaces.nsIChannel).URI.spec;
 		    this.channel = aRequest;
 		    this.channel.contentType = "text/plain";
 		    this.listener.onStartRequest (this.channel, aContext);
@@ -55,7 +57,7 @@ if (!MarkdownViewer.StreamConverter) {
 
 		onDataAvailable: function(aRequest, aContext, aInputStream, aOffset, aCount) {
 			var si = Components.classes["@mozilla.org/scriptableinputstream;1"].createInstance();
-			si     = si.QueryInterface(Components.interfaces.nsIScriptableInputStream);
+			si = si.QueryInterface(Components.interfaces.nsIScriptableInputStream);
 			si.init(aInputStream);
 			this.data += si.read(aCount);
 		},
@@ -70,7 +72,9 @@ if (!MarkdownViewer.StreamConverter) {
 	};
 }
 
-if (XPCOMUtils.generateNSGetFactory)
-    var NSGetFactory = XPCOMUtils.generateNSGetFactory([MarkdownViewer.StreamConverter]);
-else
-    var NSGetModule = XPCOMUtils.generateNSGetModule([MarkdownViewer.StreamConverter]);
+if (XPCOMUtils.generateNSGetFactory) {
+	var NSGetFactory = XPCOMUtils.generateNSGetFactory([MarkdownViewer.StreamConverter]);
+}
+else {
+	var NSGetModule = XPCOMUtils.generateNSGetModule([MarkdownViewer.StreamConverter]);
+}
