@@ -64,6 +64,10 @@ if (!MarkdownViewer) {
 		},
 
 		onPageLoad: function(aEvent) {
+            if (aEvent.originalTarget.documentURI.indexOf('about:neterror') === 0) {
+                this.onPageError();
+                return;
+            }
 			const document = aEvent.originalTarget;
 			const markdownFileExtension = /\.m(arkdown|kdn?|d(o?wn)?)(\?.*)?(#.*)?$/i;
 
