@@ -1,14 +1,9 @@
+/* globals Components, markdownit, hljs, gContextMenu */
+
 window.addEventListener('load', function load(event) {
 	window.removeEventListener('load', load, false);
 	MarkdownViewer.init();
 }, false);
-
-// https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XPCOM/Reference/Interface/nsIURI
-function makeURI(aURL, aOriginCharset, aBaseURI) {
-	var ioService = Components.classes["@mozilla.org/network/io-service;1"]
-	                          .getService(Components.interfaces.nsIIOService);
-	return ioService.newURI(aURL, aOriginCharset, aBaseURI);
-}
 
 function BrowserSetForcedCharacterSet(aCharset) {
 	var wnd = (gContextMenu ? document.commandDispatcher.focusedWindow : window);
