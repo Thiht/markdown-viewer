@@ -8,7 +8,7 @@
 		<em:name>Markdown Viewer</em:name>
 		<em:creator>Thiht</em:creator>
 		<em:description>Markdown document viewer.</em:description>
-		<em:iconURL>chrome://markdown-viewer/skin/icon32.png</em:iconURL>
+		<em:iconURL>resource://mdvskin/icon32.png</em:iconURL>
 
 		<!-- Firefox -->
 		<em:targetApplication>

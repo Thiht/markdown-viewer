@@ -1,6 +1,6 @@
 content markdown-viewer chrome/content/
-skin markdown-viewer mdvskin chrome/skin/
 resource mdvskin chrome/skin/
+resource mdvlib chrome/lib/
 overlay chrome://browser/content/browser.xul chrome://markdown-viewer/content/overlay.xul
 overlay chrome://navigator/content/navigator.xul chrome://markdown-viewer/content/overlay.xul
 

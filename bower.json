@@ -1,0 +1,16 @@
+{
+  "name": "markdown-viewer",
+  "homepage": "https://github.com/Thiht/markdown-viewer",
+  "authors": [
+    "Thibaut Rousseau <thibaut.rousseau@protonmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "markdown-it": "^6.0.0",
+    "highlightjs": "^9.2.0"
+  }
+}
