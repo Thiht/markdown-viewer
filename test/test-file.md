@@ -46,6 +46,8 @@ https://addons.mozilla.org/fr/firefox/addon/markdown-viewer/
 
 [link (markdown-viewer on AMO)](https://addons.mozilla.org/fr/firefox/addon/markdown-viewer/)
 
+[relative link](hello-world.md)
+
 ```js
 // Some Javascript code
 function myFunction() {
@@ -57,7 +59,9 @@ function myFunction() {
 
 ![Large image (should be resized)](http://lorempixel.com/1200/200/)
 
-<strong>html is allowed, but scripts (into script tags ot inline) aren't</strong>
+<strong>HTML is allowed</strong>
+
+<strong onclick="alert('XSS')">But scripts (into script tags ot inline) aren't</strong>
 
 <button onclick="alert('XSS')">meep</button>
 
