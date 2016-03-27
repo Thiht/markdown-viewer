@@ -98,18 +98,18 @@ if (!MarkdownViewer) {
 				mdvStyle.href = 'resource://mdvskin/markdown-viewer.css';
 				document.head.appendChild(mdvStyle);
 
-				const hljsStyle = document.createElement('link');
-				hljsStyle.rel = 'stylesheet';
-				hljsStyle.type = 'text/css';
-				hljsStyle.href = 'resource://mdvskin/default.css';
-				document.head.appendChild(hljsStyle);
-
 				const printStyle = document.createElement('link');
 				printStyle.rel = 'stylesheet';
 				printStyle.setAttribute('media', 'print');
 				printStyle.type = 'text/css';
 				printStyle.href = 'resource://mdvskin/markdown-viewer-print.css';
 				document.head.appendChild(printStyle);
+
+				const hljsStyle = document.createElement('link');
+				hljsStyle.rel = 'stylesheet';
+				hljsStyle.type = 'text/css';
+				hljsStyle.href = 'resource://mdvlib/highlightjs/styles/default.css';
+				document.head.appendChild(hljsStyle);
 
 				// Adding this is considered a good practice for mobiles
 				const viewport = document.createElement('meta');
