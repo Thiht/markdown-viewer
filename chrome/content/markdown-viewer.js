@@ -39,7 +39,7 @@ if (!MarkdownViewer) {
 				markdownFileExtension.test(document.location.href) &&
 				document.contentType !== "text/html") {
 
-				var textContent = document.documentElement.textContent;
+				var textContent = document.body.textContent;
 				// Empty the body
 				while (document.body.firstChild) {
 					document.body.removeChild(document.body.firstChild);
