@@ -1,0 +1,27 @@
+{
+  "name": "sss",
+  "homepage": "https://github.com/Thiht/sss",
+  "authors": [
+    "Thibaut Rousseau <thibaut.rousseau@protonmail.com>"
+  ],
+  "description": "A simple style sheet",
+  "main": [
+    "sss.css",
+    "sss.print.css"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "index.htm"
+  ],
+  "version": "0.1.0",
+  "_release": "0.1.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.1.0",
+    "commit": "ebc12053b503ff466c6a2a816ed2dcd5e4925dd6"
+  },
+  "_source": "git://github.com/Thiht/sss.git",
+  "_target": "^0.1.0",
+  "_originalSource": "sss",
+  "_direct": true
+}

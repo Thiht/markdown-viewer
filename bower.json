@@ -11,6 +11,7 @@
   "private": true,
   "dependencies": {
     "markdown-it": "^6.0.0",
-    "highlightjs": "^9.2.0"
+    "highlightjs": "^9.2.0",
+    "sss": "^0.1.0"
   }
 }

@@ -95,14 +95,14 @@ if (!MarkdownViewer) {
 				const mdvStyle = document.createElement('link');
 				mdvStyle.rel = 'stylesheet';
 				mdvStyle.type = 'text/css';
-				mdvStyle.href = 'resource://mdvskin/markdown-viewer.css';
+				mdvStyle.href = 'resource://mdvlib/sss/sss.css';
 				document.head.appendChild(mdvStyle);
 
 				const printStyle = document.createElement('link');
 				printStyle.rel = 'stylesheet';
 				printStyle.setAttribute('media', 'print');
 				printStyle.type = 'text/css';
-				printStyle.href = 'resource://mdvskin/markdown-viewer-print.css';
+				printStyle.href = 'resource://mdvlib/sss/sss.print.css';
 				document.head.appendChild(printStyle);
 
 				const hljsStyle = document.createElement('link');
