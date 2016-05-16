@@ -48,6 +48,12 @@ https://addons.mozilla.org/fr/firefox/addon/markdown-viewer/
 
 [relative link](hello-world.md)
 
+[relative link 2](../test/hello-world.md)
+
+[relative link 3](..)
+
+[relative link 4](../..)
+
 ```js
 // Some Javascript code
 function myFunction() {
