@@ -130,37 +130,23 @@ if (!MarkdownViewer) {
 
 				// Restore the links
 				var links = document.getElementsByTagName('a');
-
-				// Files in the same folder: "fileNameRegardlessOfExtension",
-				// "./fileNameRegardlessOfExtension", "." or "./". Allow any #hash-part, too.
-				// Also, allow for relative (#hash-part-only) URLs within the same document.
-				var linkInTheSameFolderWithHash = /^(\.|(\.\/)?[^#/\\]*)(#.*)?$/;
-
-				// Like linkInTheSameFolderWithHash, but without extension and exluding any #hash-part.
-				var linkWithNoExtension = /^(\.|(\.\/)?[^#/\\.]*)$/;
+				var relativeLinkWithHash = /^(\/?(?:[^#/]+\/)*(?:[^#/.]+(\.[^#/.]*)*))(#.*)?$/;
 
 				for (var i=0; i < links.length; i++) {
 					var link = links[i];
 					if (!link.getAttribute('href')) {
 						var originalHref = link.getAttribute('data-original-href');
-
-						// linkInTheSameFolderWithHash also matches an empty string, so check that URL is non-empty
+						if (originalHref === './'){
+							originalHref = './index.md';
+						}
 						if (originalHref !== '') {
-							// Sanitize: Only allow links in the same folder.
-							var match = linkInTheSameFolderWithHash.exec(originalHref);
+							var match = relativeLinkWithHash.exec(originalHref);
 							if (match) {
 								var url = match[1];
-
-								// Handling links with no extension, as used on Github pages:
-								// replacing PageName with PageName.md. Also, replacing ./ with ./index.md.
-								// If url is empty, then it's a #hash-part-only relative link.
-								if (url !== '' && linkWithNoExtension.test(url)) {
-									if (url === '.' || url === './') {
-										url = 'index';
-									}
-									url += '.md';
+								if(!match[2]){
+									url += ".md";
 								}
-								if (match[3]) {
+								if(match[3]){
 									url += match[3];
 								}
 								link.setAttribute('href', url);
