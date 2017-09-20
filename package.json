@@ -1,0 +1,24 @@
+{
+  "scripts": {
+    "start": "web-ext run",
+    "precommit": "lint-staged",
+    "lint": "web-ext lint",
+    "fmt": "prettier --write *.{js,json,css}"
+  },
+  "lint-staged": {
+    "*.{js,json,css}": ["prettier --write", "git add"]
+  },
+  "dependencies": {
+    "highlightjs": "^9.10.0",
+    "markdown-it": "^8.4.0",
+    "normalize.css": "^7.0.0",
+    "sss": "https://github.com/Thiht/sss.git",
+    "yaml-front-matter": "^3.4.0"
+  },
+  "devDependencies": {
+    "husky": "^0.14.3",
+    "lint-staged": "^4.2.1",
+    "prettier": "^1.7.0",
+    "web-ext": "^2.0.0"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "manifest_version": 2,
+  "name": "Markdown Viewer",
+  "version": "2.0",
+  "description": "Visualize Markdown documents in your browser!",
+  "author": "Thibaut Rousseau",
+  "icons": {
+    "32": "assets/icon32.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*/*.md", "file:///*.md"],
+      "js": [
+        "node_modules/markdown-it/dist/markdown-it.min.js",
+        "node_modules/highlightjs/highlight.pack.min.js",
+        "node_modules/yaml-front-matter/dist/js-yaml-front-client.min.js",
+        "index.js"
+      ],
+      "css": [
+        "node_modules/normalize.css/normalize.css",
+        "node_modules/highlightjs/styles/default.css",
+        "node_modules/sss/sss.css",
+        "style.css"
+      ]
+    }
+  ]
+}
