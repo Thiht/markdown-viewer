@@ -1,5 +1,13 @@
 # Markdown Viewer
 
+## Compatibility
+
+This extension has been tested and is supported on the following environments:
+
+| OS           | Browser                    | Compatibility |
+|--------------|----------------------------|:-------------:|
+| Ubuntu 16.04 | Mozilla Firefox 55.0.2 x64 | ✔             |
+
 ## Development
 
 Requirements:
